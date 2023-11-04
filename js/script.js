@@ -159,8 +159,7 @@ function loadLogin() {
                     },
                     body: JSON.stringify(updateObject)
                 }).then(response => response.text()).then(resText => {
-                    console.log(resText);
-                    searchTemplate(currentSearchQuery, currentPage);
+                    searchTemplate(currentSearchQuery, 0);
                     mp4Holder.click();
                     jpegHolder.click();
                     document.getElementById("initName").value = "";
@@ -204,21 +203,21 @@ function loadLogin() {
     const nextPageButton = document.getElementById("nextPage");
 
 
-    let currentPage = 0;
+    let currentPageIndex = 0;
 
     prevPageButton.addEventListener("click", () => {
-        if (currentPage > 0) {
-            currentPage--;
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
         }
-        if (currentPage >= 0) {
-            searchTemplate(currentSearchQuery, currentPage);
+        if (currentPageIndex >= 0) {
+            searchTemplate(currentSearchQuery, currentPageIndex);
         }
     });
 
     nextPageButton.addEventListener("click", () => {
         // In a real application, you would check if there are more pages to go to.
-        currentPage++;
-        searchTemplate(currentSearchQuery, currentPage);
+        currentPageIndex++;
+        searchTemplate(currentSearchQuery, currentPageIndex);
     });
 }
 let switchState = false;
@@ -305,7 +304,8 @@ function templateListReload(templates) {
                         "Authorization": "Bearer " + localStorage.getItem('accessToken')
                     },
                 }).then(response => response.text()).then(resText => {
-                    searchTemplate(currentSearchQuery, currentPage);
+                    console.log(currentPageIndex);
+                    searchTemplate(currentSearchQuery, currentPageIndex);
                     selectedItem = null;
 
                     nameField.value = "";

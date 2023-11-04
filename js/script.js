@@ -3,6 +3,7 @@ var currentUploadMp4 = null;
 var currentUploadJpeg = null;
 var currentUploadName = null;
 var currentUploadTag = null;
+let currentPageIndex = 0;
 
 function startLoad() {
     const mp4Holder = document.getElementById("mp4Holder");
@@ -82,7 +83,7 @@ function loadLogin() {
             body: JSON.stringify(updateObject)
         }).then(response => response.text()).then(resText => {
             console.log(resText);
-            searchTemplate(currentSearchQuery, currentPage);
+            searchTemplate(currentSearchQuery, currentPageIndex);
         })
     });
 
@@ -159,7 +160,8 @@ function loadLogin() {
                     },
                     body: JSON.stringify(updateObject)
                 }).then(response => response.text()).then(resText => {
-                    searchTemplate(currentSearchQuery, 0);
+                    console.log(currentPageIndex);
+                    searchTemplate(currentSearchQuery, currentPageIndex);
                     mp4Holder.click();
                     jpegHolder.click();
                     document.getElementById("initName").value = "";
@@ -201,9 +203,6 @@ function loadLogin() {
 
     const prevPageButton = document.getElementById("prevPage");
     const nextPageButton = document.getElementById("nextPage");
-
-
-    let currentPageIndex = 0;
 
     prevPageButton.addEventListener("click", () => {
         if (currentPageIndex > 0) {

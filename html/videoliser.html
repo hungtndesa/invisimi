@@ -1,0 +1,111 @@
+</html>
+
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body onload="startLoad()">
+
+    <section id="login-screen">
+        <div id="bg_title">
+            <p id="title_login">Videoliser Admin</p>
+        </div>
+        <div>
+            <p id="intro_login">Ultimate resources management <br>system</p>
+            <p class="copyright">Copyright © Desa Technology <br> CSS Beautifier & Maintain by Eric Tran</p>
+            <input type="text" id="username" placeholder="Username"><br><br>
+            <input type="password" id="password" placeholder="Password"><br><br>
+            <button id="loginButton">Login</button>
+            <div id="error"></div>
+        </div>
+    </section>
+
+    <!-- Control Screen -->
+    <section id="controlScreen">
+        <div id="leftHalf">
+            <div id="left_root">
+                <label class="toggle">
+                    <input class="toggle-checkbox" type="checkbox" onclick='changeStateSwitch()'>
+                    <div class="toggle-switch"></div>
+                    <span id="toggle-label"><b>Name</b></span>
+                </label>
+
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search...">
+                    <button id="search-button">Search</button>
+                </div>
+                <h2 id="title_template">Available template</h2>
+                <div id="grid">
+                </div>
+                <div class="page-selector">
+                    <button id="prevPage">&lt;</button>
+                    <span id="currentPage"> Page 0 </span>
+                    <button id="nextPage">&gt;</button>
+                </div>
+            </div>
+        </div>
+        <div id="rightHalf">
+            <div id="contentUpload">
+                <h2 id="content_upload_title">Drag and Drop</h2>
+                <div id="inputUpload">
+                    <div id="dragDropSquares">
+                        <div class="square" id="mp4Square" ondrop="handleDrop(event, 'mp4Square')"
+                            ondragover="allowDrop(event)">
+                            <p id="mp4Holder">Mp4 File</p>
+                        </div>
+                        <div class="square" id="jpegSquare" ondrop="handleDrop(event, 'jpegSquare')"
+                            ondragover="allowDrop(event)">
+                            <p id="jpegHolder">JPEG File</p>
+                        </div>
+                    </div>
+
+                    <div id="initField">
+                        <div id="name_title_drag_drop">
+                            <p>Name</p>
+                            <input id="initName" type="text" placeholder="Name">
+                        </div>
+                        <br><br>
+                        <div id="name_tag_drag_drop">
+                            <p>Tags</p>
+                            <input id="initTags" type="text" placeholder="Tags (separate by ',')"><br><br>
+                        </div>
+                    </div>
+                </div>
+                <div id="loader"></div>
+                <button id="submitButton">Submit</button>
+
+            </div>
+
+            <div id="updateField">
+
+                <div id="updateChild">
+                    <h2 id="update-header">Update Template</h2>
+                    <div id="name_update_drag_drop">
+                        <p>Name</p>
+                        <input id="templateName" type="text" placeholder="Name">
+                    </div>
+                    <br><br>
+                    <div id="name_update_drag_drop">
+                        <p>Tags</p>
+                        <input id="templateTags" type="text" placeholder="Tags (separate by ',')"><br><br>
+                    </div>
+                    <button id="templateUpdate">Update</button>
+                </div>
+
+
+                <video id="video" controls autoplay>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+</body>
+
+</html>

@@ -51,6 +51,7 @@ function startLoad() {
 }
 
 function loadLogin() {
+    document.body.style.backgroundColor = "#f6faff";
     document.getElementById("templateUpdate").addEventListener("click", function () {
         if (selectedItem == null) {
             alert("Select an item first");
